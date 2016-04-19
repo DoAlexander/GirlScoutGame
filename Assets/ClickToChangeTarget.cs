@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ClickToChangeTarget : MonoBehaviour {
 	public NavMeshAgent nav;
+	public GameObject projectile;
 	// Use this for initialization
 	void Start () {
 	
@@ -19,7 +20,18 @@ public class ClickToChangeTarget : MonoBehaviour {
 				//log hit area to the console
 				Debug.Log(hit.point);
 
-				nav.SetDestination (hit.point);
+				//nav.SetDestination (hit.point);
+				if(hit.collider.gameObject.tag == ("Terrain"))
+				{
+					nav.SetDestination(hit.point);
+				}
+
+				Vector3 shootDir = hit.point - this.transform.position;
+				shootDir = shootDir.normalized;
+
+				Debug.Log ("SHOOT");
+				GameObject myProj = (GameObject)Instantiate (projectile, this.transform.position + shootDir + Vector3.up, Quaternion.identity);
+				myProj.GetComponent<Rigidbody> ().AddForce (shootDir  * 5000);
 			}
 		}
 	}
