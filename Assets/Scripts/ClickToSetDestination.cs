@@ -5,6 +5,7 @@ public class ClickToSetDestination : MonoBehaviour {
 
 	public GameObject raisin;
 	public float fireTime = 0.5f;
+	public LayerMask layerMask;
 
 	protected NavMeshAgent nav;
 	protected float currentTimer;
@@ -18,7 +19,7 @@ public class ClickToSetDestination : MonoBehaviour {
 		currentTimer += Time.deltaTime;
 		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 		RaycastHit hit;
-		if (Physics.Raycast (ray, out hit, Mathf.Infinity)) {
+		if (Physics.Raycast (ray, out hit, Mathf.Infinity, layerMask)) {
 			if (Input.GetMouseButton (0)) {
 			
 
