@@ -8,13 +8,13 @@ public class LairEntrance : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (collectedAllCookies) {
+		if ((other.tag == "Player")&&(collectedAllCookies)) {
 
-			Debug.Log ("HelpMe.");
+			//Debug.Log ("HelpMe.");
 			SceneManager.LoadScene(1);
 
 		}
-		Debug.Log ("Hello Anthony, you smell nice.");
+		//Debug.Log ("Hello Anthony, you smell nice.");
 	}
 
 	// Use this for initialization

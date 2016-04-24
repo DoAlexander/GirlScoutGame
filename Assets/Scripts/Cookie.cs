@@ -5,8 +5,10 @@ public class Cookie : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		DoStuff ();
-		Destroy (this.gameObject);
+		if (other.tag == "Player") {
+			DoStuff ();
+			Destroy (this.gameObject);
+		}
 	}
 
 	void DoStuff()
